@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useNavigate } from 'react-router-dom';
+import { useGetUserQuery } from '../redux/features/authApi';
 
 const navigation = [
   { name: 'Home', navlink: '/' },
@@ -13,7 +14,11 @@ const navigation = [
 const Headers = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navigate = useNavigate();
+  const jsonData: any = localStorage.getItem('token')
+  const token = jsonData ?  JSON.parse(jsonData) : 'jsdflkashhdlfkj'
 
+  const { data, isLoading, error } = useGetUserQuery(token);
+  console.log('User Data ====>',jsonData, data)
     return (
       <div className="bg-white">
       <header className="absolute inset-x-0 top-0 z-50">
@@ -44,16 +49,26 @@ const Headers = () => {
               </p>
             ))}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          {
+            !data?.email &&  <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <p onClick={() => navigate('/SignUp')} className="text-sm font-semibold leading-6 text-gray-900 cursor-pointer text-rose-700 font-bold text-lg">
               Sign Up <span aria-hidden="true">&rarr;</span>
             </p>
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+      
+          }
+        {
+          data?.email ? <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <button onClick={() => {
+              localStorage.clear()
+            }} className="rounded-full bg-yellow-400 py-2 px-4 mt-4 text-white font-bold">LogOut</button>
+          </div>: <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <p onClick={() => navigate('/login')} className="text-sm font-semibold leading-6 text-gray-900 cursor-pointer text-rose-700 font-bold text-lg">
               Log in <span aria-hidden="true">&rarr;</span>
             </p>
           </div>
+        }
+          
         </nav>
         <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
           <div className="fixed inset-0 z-50" />
