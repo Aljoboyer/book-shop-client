@@ -17,8 +17,10 @@ const Headers = () => {
   const jsonData: any = localStorage.getItem('token')
   const token = jsonData ?  JSON.parse(jsonData) : 'jsdflkashhdlfkj'
 
-  const { data, isLoading, error } = useGetUserQuery(token);
-  console.log('User Data ====>',jsonData, data)
+  const { data, isLoading, error } = useGetUserQuery(token, {
+    refetchOnMountOrArgChange: true,
+  });
+  console.log('User Data ====>',token, data)
     return (
       <div className="bg-white">
       <header className="absolute inset-x-0 top-0 z-50">
@@ -60,7 +62,9 @@ const Headers = () => {
         {
           data?.email ? <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <button onClick={() => {
-              localStorage.clear()
+              localStorage.clear();
+              window.location.reload()
+              navigate('/')
             }} className="rounded-full bg-yellow-400 py-2 px-4 mt-4 text-white font-bold">LogOut</button>
           </div>: <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <p onClick={() => navigate('/login')} className="text-sm font-semibold leading-6 text-gray-900 cursor-pointer text-rose-700 font-bold text-lg">

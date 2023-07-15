@@ -14,10 +14,19 @@ const productApi = api.injectEndpoints({
         query: (token) => `/user/getUser?token=${token}`,
         providesTags: ['authUser'],
       }),
+    login: builder.mutation({
+      query: (data ) => ({
+        url: '/user/login-user',
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['authUser'],
+    }),
   }),
 });
 
 export const {
   useSignUpMutation,
   useGetUserQuery,
+  useLoginMutation,
 } = productApi;

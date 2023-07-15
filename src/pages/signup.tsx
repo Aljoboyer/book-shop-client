@@ -13,7 +13,7 @@ const SignUp = () => {
     const data: any = await signUp(userObj)
     console.log('this is data', data?.data)
     if(data?.data?.result?.email){
-      localStorage.setItem('token', data?.data?.token)
+      localStorage.setItem('token', JSON.stringify(data?.data?.token))
      setTimeout(() => {
       navigate('/')
      },1000)
