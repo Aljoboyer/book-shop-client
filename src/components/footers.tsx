@@ -3,7 +3,7 @@
 const Footers = () => {
 
     return (
-      <div className="bg-black">
+      <div className="bg-black mt-16 items-end">
 
     <div className=" grid grid-cols-4 gap-4 ps-7">
         <div className="mt-3">

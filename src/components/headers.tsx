@@ -6,8 +6,8 @@ import { useGetUserQuery } from '../redux/features/authApi';
 
 const navigation = [
   { name: 'Home', navlink: '/' },
-  { name: 'Features', navlink: '#' },
-  { name: 'Marketplace', navlink: '#' },
+  { name: 'AddBook', navlink: '/AddBook' },
+  { name: 'AllBooks', navlink: '/AllBooks' },
   { name: 'Company', navlink: '#' },
 ]
 

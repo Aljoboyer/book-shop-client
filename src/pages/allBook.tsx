@@ -1,13 +1,20 @@
-import moment from "moment";
-import { useGetAllBookQuery } from "../redux/features/bookApi";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGetAllBookQuery } from "../redux/features/bookApi";
 
-const Home = () => {
+const AllBooks = () => {
   const { data, isLoading, error } = useGetAllBookQuery({
     refetchOnMountOrArgChange: true,
   });
-const navigate = useNavigate()
+const navigate = useNavigate();
 
+useEffect(() => {
+  const isToken = localStorage.getItem('token')
+  if(!isToken){
+    navigate('/login')
+    return
+  }
+},[])
   return (
     <div className="my-96">
        <div className="relative isolate px-6 pt-14 lg:px-8">
@@ -23,11 +30,11 @@ const navigate = useNavigate()
             }}
           />
         </div>
-        <h1 className="text-6xl text-blue-900 font-bold text-center mb-7">Welcome to online Book Shop</h1>
+        <h1 className="text-6xl text-blue-900 font-bold text-center mb-7">All Book Here</h1>
        {
         <div className="grid grid-cols-4 gap-4 container-xl">
           {
-            data?.slice(0, 10)?.map((book: any) => (
+            data?.map((book: any) => (
               <div className="border border-2 border-teal-200  rounded-lg ps-7 py-7">
                 <p className="text-teal-400 text-2xl font-bold">{book?.title}</p>
                 <p className="text-teal-950 font-bold">{book?.author}</p>
@@ -56,4 +63,4 @@ const navigate = useNavigate()
   );
 };
 
-export default Home;
+export default AllBooks;
