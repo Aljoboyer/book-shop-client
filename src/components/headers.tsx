@@ -17,7 +17,7 @@ const Headers = () => {
   const jsonData: any = localStorage.getItem('token')
   const token = jsonData ?  JSON.parse(jsonData) : 'jsdflkashhdlfkj'
 
-  const { data, isLoading, error } = useGetUserQuery(token, {
+  const { data } = useGetUserQuery(token, {
     refetchOnMountOrArgChange: true,
   });
   console.log('User Data ====>',token, data)
