@@ -4,6 +4,7 @@ import { useBookAddMutation } from "../redux/features/bookApi";
 
 const AddBook = () => {
     const [bookAdd, { isLoading, isError, isSuccess }] = useBookAddMutation();
+    console.log( isLoading, isError, isSuccess)
     const [bookObj, setBookObj] = useState({})
 
     const AddBookHandler = async () => {

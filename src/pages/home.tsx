@@ -1,4 +1,4 @@
-import moment from "moment";
+
 import { useGetAllBookQuery } from "../redux/features/bookApi";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +6,7 @@ const Home = () => {
   const { data, isLoading, error } = useGetAllBookQuery({
     refetchOnMountOrArgChange: true,
   });
+  console.log( isLoading, error)
 const navigate = useNavigate()
 
   return (

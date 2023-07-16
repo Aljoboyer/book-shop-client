@@ -1,9 +1,9 @@
-import { useState,useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetAllBookQuery } from "../redux/features/bookApi";
 
 const AllBooks = () => {
-  const { data, isLoading, error } = useGetAllBookQuery({
+  const { data } = useGetAllBookQuery({
     refetchOnMountOrArgChange: true,
   });
 const navigate = useNavigate();

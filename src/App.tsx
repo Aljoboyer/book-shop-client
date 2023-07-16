@@ -6,7 +6,6 @@ import Notfound from "./pages/notfound";
 import SignUp from "./pages/signup";
 import Footers from "./components/footers";
 import AddBook from "./pages/addBook";
-import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 import 'sweetalert2/src/sweetalert2.scss'
 import AllBooks from "./pages/allBook";

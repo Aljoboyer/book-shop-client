@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDeleteBookMutation, useGetSingleBookQuery } from "../redux/features/bookApi";
 import Swal from "sweetalert2";
@@ -10,6 +10,7 @@ const BookDetails = () => {
         refetchOnMountOrArgChange: true,
       });
     const [deleteBook, { isError, isSuccess }] = useDeleteBookMutation();
+    console.log( isLoading, isError, isSuccess, error)
     const navigate = useNavigate();
 
     useEffect(() => {

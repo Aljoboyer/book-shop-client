@@ -9,6 +9,7 @@ const EditBook = () => {
         refetchOnMountOrArgChange: true,
       });
     const [bookEdit, { isError, isSuccess }] = useBookEditMutation();
+    console.log( isLoading, isError, isSuccess, error)
     const [bookObj, setBookObj] = useState({
         _id: '',
         title: '',

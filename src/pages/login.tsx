@@ -4,7 +4,7 @@ import { useLoginMutation } from "../redux/features/authApi";
 
 const Login = () => {
   const [login, { isLoading, isError, isSuccess }] = useLoginMutation();
-
+  console.log( isLoading, isError, isSuccess)
   const [userObj, setUserObj] = useState({})
   const navigate = useNavigate();
 

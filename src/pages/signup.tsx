@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useGetUserQuery, useSignUpMutation } from "../redux/features/authApi";
+import { useSignUpMutation } from "../redux/features/authApi";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [signUp, { isLoading, isError, isSuccess }] = useSignUpMutation();
-
+  console.log( isLoading, isError, isSuccess)
   const [userObj, setUserObj] = useState({})
   const navigate = useNavigate();
 
