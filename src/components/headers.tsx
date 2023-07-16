@@ -8,7 +8,6 @@ const navigation = [
   { name: 'Home', navlink: '/' },
   { name: 'AddBook', navlink: '/AddBook' },
   { name: 'AllBooks', navlink: '/AllBooks' },
-  { name: 'Company', navlink: '#' },
 ]
 
 const Headers = () => {
